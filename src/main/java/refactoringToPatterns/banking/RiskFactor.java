@@ -1,4 +1,4 @@
-package RefactorToPatterns.banking;
+package refactoringToPatterns.banking;
 
 public class RiskFactor implements Factor {
     public static RiskFactor getFactors() {

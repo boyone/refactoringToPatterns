@@ -1,4 +1,4 @@
-package RefactorToPatterns.banking;
+package refactoringToPatterns.banking;
 
 import java.util.Date;
 import java.util.Set;

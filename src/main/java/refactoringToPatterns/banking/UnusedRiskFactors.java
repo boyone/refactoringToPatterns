@@ -1,4 +1,4 @@
-package RefactorToPatterns.banking;
+package refactoringToPatterns.banking;
 
 /**
  * Created with IntelliJ IDEA.
