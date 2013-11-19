@@ -77,4 +77,14 @@ public class CapitalCalculationTests {
         assertEquals(RiskAdjustedCapitalStrategy.class, revolverLoan.getCapitalStrategy().getClass());
     }
 
+    @Test
+    public void shouldCreateRCTLWithRiskAdjustedCapitalStrategy() {
+        //when
+        Loan rctl = new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, maturity, expiry);
+
+        //then
+        assertNotNull(rctl);
+        assertEquals(RiskAdjustedCapitalStrategy.class, rctl.getCapitalStrategy().getClass());
+    }
+
 }
