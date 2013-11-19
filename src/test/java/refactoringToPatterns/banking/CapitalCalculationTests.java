@@ -70,15 +70,11 @@ public class CapitalCalculationTests {
     @Test
     public void shouldCreateRevolverLoanWithRiskAdjustedCapitalStrategy() {
         //when
-        Loan revolverLoan = createRevelverLoan(riskAdjustedCapitalStrategy, commitment, riskRating, expiry);
+        Loan revolverLoan = Loan.createRevolverLoan(riskAdjustedCapitalStrategy, commitment, riskRating, expiry);
 
         //then
         assertNotNull(revolverLoan);
         assertEquals(RiskAdjustedCapitalStrategy.class, revolverLoan.getCapitalStrategy().getClass());
-    }
-
-    public static Loan createRevelverLoan(CapitalStrategy riskAdjustedCapitalStrategy, int commitment, int riskRating, Date expiry) {
-        return new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, null, expiry);
     }
 
 }
