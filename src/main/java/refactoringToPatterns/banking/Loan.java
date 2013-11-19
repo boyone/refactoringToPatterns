@@ -15,7 +15,7 @@ public class Loan {
     private Date today;
     private Date start;
 
-    public Loan(CapitalStrategy capitalStrategy, double commitment,
+    private Loan(CapitalStrategy capitalStrategy, double commitment,
                 double outstanding, int riskRating,
                 Date maturity, Date expiry) {
         this.commitment = commitment;
