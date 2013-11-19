@@ -54,7 +54,7 @@ public class Loan {
     }
 
     public static Loan createTermLoan(int commitment, int riskRating, Date maturity) {
-        return new Loan(commitment, riskRating, maturity);
+        return new Loan(commitment, 0.00, riskRating, maturity, null);
     }
 
     public double getCommitment() {
