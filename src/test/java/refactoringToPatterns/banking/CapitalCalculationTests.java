@@ -4,12 +4,12 @@ import org.junit.Test;
 
 import java.util.Date;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertTrue;
 
 public class CapitalCalculationTests {
     @Test
-    public void ShouldGetTermLoanInstance() {
+    public void shouldCreateTermLoanInstance() {
         //given
         int commitment = 1;
         int riskRating = 1;
@@ -20,7 +20,8 @@ public class CapitalCalculationTests {
 
         //then
         assertNotNull(termLoan);
-        assertTrue(termLoan.getCapitalStrategy() instanceof CapitalStrategyTermLoan);
+        assertEquals(CapitalStrategyTermLoan.class, termLoan.getCapitalStrategy().getClass());
     }
+
 
 }
