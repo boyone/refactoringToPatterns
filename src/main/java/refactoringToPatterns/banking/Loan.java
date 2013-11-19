@@ -15,14 +15,6 @@ public class Loan {
     private Date today;
     private Date start;
 
-    public Loan(double commitment, int riskRating, Date maturity) {
-        this(commitment, 0.00, riskRating, maturity, null);
-    }
-
-    public Loan(double commitment, int riskRating, Date maturity, Date expiry) {
-        this(commitment, 0.00, riskRating, maturity, expiry);
-    }
-
     public Loan(double commitment, double outstanding,
                 int customerRating, Date maturity, Date expiry) {
         this(null, commitment, outstanding, customerRating, maturity, expiry);
@@ -58,11 +50,11 @@ public class Loan {
     }
 
     public static Loan createRevolverLoan(int commitment, int riskRating, Date expiry) {
-        return new Loan(commitment, riskRating, null, expiry);
+        return new Loan(commitment, 0.00, riskRating, null, expiry);
     }
 
     public static Loan createRCTL(int commitment, int riskRating, Date maturity, Date expiry) {
-        return new Loan(commitment, riskRating, maturity, expiry);
+        return new Loan(commitment, 0.00, riskRating, maturity, expiry);
     }
 
     public double getCommitment() {
