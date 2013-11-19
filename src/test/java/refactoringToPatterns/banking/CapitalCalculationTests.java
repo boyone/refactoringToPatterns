@@ -80,11 +80,15 @@ public class CapitalCalculationTests {
     @Test
     public void shouldCreateRCTLWithRiskAdjustedCapitalStrategy() {
         //when
-        Loan rctl = new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, maturity, expiry);
+        Loan rctl = createRCTL(riskAdjustedCapitalStrategy, commitment, riskRating, maturity, expiry);
 
         //then
         assertNotNull(rctl);
         assertEquals(RiskAdjustedCapitalStrategy.class, rctl.getCapitalStrategy().getClass());
+    }
+
+    public static Loan createRCTL(CapitalStrategy riskAdjustedCapitalStrategy, int commitment, int riskRating, Date maturity, Date expiry) {
+        return new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, maturity, expiry);
     }
 
 }
