@@ -15,14 +15,10 @@ public class CapitalCalculationTests {
         Date maturity = new Date();
 
         //when
-        Loan termLoan = createTermLoan(commitment, riskRating, maturity);
+        Loan termLoan = Loan.createTermLoan(commitment, riskRating, maturity);
 
         //then
         assertNotNull(termLoan);
-    }
-
-    private static Loan createTermLoan(int commitment, int riskRating, Date maturity) {
-        return new Loan(commitment, riskRating, maturity);
     }
 
 }
