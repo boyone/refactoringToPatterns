@@ -63,15 +63,11 @@ public class CapitalCalculationTests {
         CapitalStrategy riskAdjustedCapitalStrategy = new RiskAdjustedCapitalStrategy();
 
         //when
-        Loan termLoan = createTermLoan(commitment, riskRating, maturity, riskAdjustedCapitalStrategy);
+        Loan termLoan = Loan.createTermLoan(riskAdjustedCapitalStrategy, commitment, riskRating, maturity);
 
         //then
         assertNotNull(termLoan);
         assertEquals(RiskAdjustedCapitalStrategy.class, termLoan.getCapitalStrategy().getClass());
-    }
-
-    public static Loan createTermLoan(int commitment, int riskRating, Date maturity, CapitalStrategy riskAdjustedCapitalStrategy) {
-        return new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, maturity, null);
     }
 
 }
