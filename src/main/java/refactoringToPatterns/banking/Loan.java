@@ -21,11 +21,6 @@ public class Loan {
     }
 
     public Loan(CapitalStrategy capitalStrategy, double commitment,
-                int riskRating, Date maturity, Date expiry) {
-        this(capitalStrategy, commitment, 0.00, riskRating, maturity, expiry);
-    }
-
-    public Loan(CapitalStrategy capitalStrategy, double commitment,
                 double outstanding, int riskRating,
                 Date maturity, Date expiry) {
         this.commitment = commitment;
