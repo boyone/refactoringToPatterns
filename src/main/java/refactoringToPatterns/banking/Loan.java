@@ -60,6 +60,10 @@ public class Loan {
         return new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, null, expiry);
     }
 
+    public static Loan createRCTL(CapitalStrategy riskAdjustedCapitalStrategy, int commitment, int riskRating, Date maturity, Date expiry) {
+        return new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, maturity, expiry);
+    }
+
     public double getCommitment() {
         return commitment;
     }
