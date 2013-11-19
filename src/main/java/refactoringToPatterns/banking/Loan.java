@@ -41,15 +41,15 @@ public class Loan {
     }
 
     public static Loan createTermLoan(int commitment, int riskRating, Date maturity) {
-        return new Loan(commitment, 0.00, riskRating, maturity, null);
+        return new Loan(null, commitment, 0.00, riskRating, maturity, null);
     }
 
     public static Loan createRevolverLoan(int commitment, int riskRating, Date expiry) {
-        return new Loan(commitment, 0.00, riskRating, null, expiry);
+        return new Loan(null, commitment, 0.00, riskRating, null, expiry);
     }
 
     public static Loan createRCTL(int commitment, int riskRating, Date maturity, Date expiry) {
-        return new Loan(commitment, 0.00, riskRating, maturity, expiry);
+        return new Loan(null, commitment, 0.00, riskRating, maturity, expiry);
     }
 
     public static Loan createTermLoan(CapitalStrategy riskAdjustedCapitalStrategy, int commitment, int riskRating, Date maturity) {
