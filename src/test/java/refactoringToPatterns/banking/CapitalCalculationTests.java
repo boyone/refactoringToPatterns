@@ -1,5 +1,6 @@
 package refactoringToPatterns.banking;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
@@ -8,13 +9,26 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 public class CapitalCalculationTests {
+
+    private int commitment;
+    private int riskRating;
+    private Date maturity;
+    private Date expiry;
+    private CapitalStrategy riskAdjustedCapitalStrategy;
+
+    @Before
+    public void setup() {
+        //given
+        commitment = 1;
+        riskRating = 1;
+        maturity = new Date();
+        expiry = new Date();
+        riskAdjustedCapitalStrategy = new RiskAdjustedCapitalStrategy();
+
+    }
+
     @Test
     public void shouldCreateTermLoanInstance() {
-        //given
-        int commitment = 1;
-        int riskRating = 1;
-        Date maturity = new Date();
-
         //when
         Loan termLoan = Loan.createTermLoan(commitment, riskRating, maturity);
 
@@ -25,11 +39,6 @@ public class CapitalCalculationTests {
 
     @Test
     public void shouldCreateRevolverLoanInstance() {
-        //given
-        int commitment = 1;
-        int riskRating = 1;
-        Date expiry = new Date();
-
         //when
         Loan revolverLoan = Loan.createRevolverLoan(commitment, riskRating, expiry);
 
@@ -40,12 +49,6 @@ public class CapitalCalculationTests {
 
     @Test
     public void shouldCreateRCTLInstance() {
-        //given
-        int commitment = 1;
-        int riskRating = 1;
-        Date maturity = new Date();
-        Date expiry = new Date();
-
         //when
         Loan rctlLoan = Loan.createRCTL(commitment, riskRating, maturity, expiry);
 
@@ -56,18 +59,26 @@ public class CapitalCalculationTests {
 
     @Test
     public void shouldCreateTermLoanWithRiskAdjustedCapitalStrategy() {
-        //given
-        int commitment = 1;
-        int riskRating = 1;
-        Date maturity = new Date();
-        CapitalStrategy riskAdjustedCapitalStrategy = new RiskAdjustedCapitalStrategy();
-
         //when
         Loan termLoan = Loan.createTermLoan(riskAdjustedCapitalStrategy, commitment, riskRating, maturity);
 
         //then
         assertNotNull(termLoan);
         assertEquals(RiskAdjustedCapitalStrategy.class, termLoan.getCapitalStrategy().getClass());
+    }
+
+    @Test
+    public void shouldCreateRevolverLoanWithRiskAdjustedCapitalStrategy() {
+        //when
+        Loan revolverLoan = createRevelverLoan(riskAdjustedCapitalStrategy, commitment, riskRating, expiry);
+
+        //then
+        assertNotNull(revolverLoan);
+        assertEquals(RiskAdjustedCapitalStrategy.class, revolverLoan.getCapitalStrategy().getClass());
+    }
+
+    public static Loan createRevelverLoan(CapitalStrategy riskAdjustedCapitalStrategy, int commitment, int riskRating, Date expiry) {
+        return new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, null, expiry);
     }
 
 }
