@@ -38,4 +38,19 @@ public class CapitalCalculationTests {
         assertEquals(CapitalStrategyRevolver.class, revolverLoan.getCapitalStrategy().getClass());
     }
 
+    @Test
+    public void shouldCreateRCTLInstance() {
+        //given
+        int commitment = 1;
+        int riskRating = 1;
+        Date maturity = new Date();
+        Date expiry = new Date();
+
+        //when
+        Loan rctlLoan = new Loan(commitment, riskRating, maturity, expiry);
+
+        //then
+        assertNotNull(rctlLoan);
+        assertEquals(CapitalStrategyRCTL.class, rctlLoan.getCapitalStrategy().getClass());
+    }
 }
