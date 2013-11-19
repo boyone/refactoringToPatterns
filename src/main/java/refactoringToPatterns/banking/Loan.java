@@ -57,6 +57,10 @@ public class Loan {
         return new Loan(commitment, 0.00, riskRating, maturity, null);
     }
 
+    public static Loan createRevolverLoan(int commitment, int riskRating, Date expiry) {
+        return new Loan(commitment, riskRating, null, expiry);
+    }
+
     public double getCommitment() {
         return commitment;
     }

@@ -23,5 +23,19 @@ public class CapitalCalculationTests {
         assertEquals(CapitalStrategyTermLoan.class, termLoan.getCapitalStrategy().getClass());
     }
 
+    @Test
+    public void shouldCreateRevolverLoanInstance() {
+        //given
+        int commitment = 1;
+        int riskRating = 1;
+        Date expiry = new Date();
+
+        //when
+        Loan revolverLoan = Loan.createRevolverLoan(commitment, riskRating, expiry);
+
+        //then
+        assertNotNull(revolverLoan);
+        assertEquals(CapitalStrategyRevolver.class, revolverLoan.getCapitalStrategy().getClass());
+    }
 
 }
