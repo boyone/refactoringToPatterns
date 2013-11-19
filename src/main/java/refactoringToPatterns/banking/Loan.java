@@ -61,6 +61,10 @@ public class Loan {
         return new Loan(commitment, riskRating, null, expiry);
     }
 
+    public static Loan createRCTL(int commitment, int riskRating, Date maturity, Date expiry) {
+        return new Loan(commitment, riskRating, maturity, expiry);
+    }
+
     public double getCommitment() {
         return commitment;
     }

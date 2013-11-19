@@ -47,14 +47,11 @@ public class CapitalCalculationTests {
         Date expiry = new Date();
 
         //when
-        Loan rctlLoan = createRCTL(commitment, riskRating, maturity, expiry);
+        Loan rctlLoan = Loan.createRCTL(commitment, riskRating, maturity, expiry);
 
         //then
         assertNotNull(rctlLoan);
         assertEquals(CapitalStrategyRCTL.class, rctlLoan.getCapitalStrategy().getClass());
     }
 
-    public static Loan createRCTL(int commitment, int riskRating, Date maturity, Date expiry) {
-        return new Loan(commitment, riskRating, maturity, expiry);
-    }
 }
