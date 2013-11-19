@@ -54,4 +54,24 @@ public class CapitalCalculationTests {
         assertEquals(CapitalStrategyRCTL.class, rctlLoan.getCapitalStrategy().getClass());
     }
 
+    @Test
+    public void shouldCreateTermLoanWithRiskAdjustedCapitalStrategy() {
+        //given
+        int commitment = 1;
+        int riskRating = 1;
+        Date maturity = new Date();
+        CapitalStrategy riskAdjustedCapitalStrategy = new RiskAdjustedCapitalStrategy();
+
+        //when
+        Loan termLoan = createTermLoan(commitment, riskRating, maturity, riskAdjustedCapitalStrategy);
+
+        //then
+        assertNotNull(termLoan);
+        assertEquals(RiskAdjustedCapitalStrategy.class, termLoan.getCapitalStrategy().getClass());
+    }
+
+    public static Loan createTermLoan(int commitment, int riskRating, Date maturity, CapitalStrategy riskAdjustedCapitalStrategy) {
+        return new Loan(riskAdjustedCapitalStrategy, commitment, 0.0, riskRating, maturity, null);
+    }
+
 }
